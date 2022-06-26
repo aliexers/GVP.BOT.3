@@ -2,7 +2,6 @@ from rubika import Bot
 from json import load , dump
 import time
 
-
 bot = Bot("ysjopzxwkrsoejbuoguhchchwlztoled")
 target = "g0Bigrk0ea10fcf719cc0e68768bb9a9"
 
