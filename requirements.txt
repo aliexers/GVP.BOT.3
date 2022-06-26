@@ -2,6 +2,3 @@ requests
 tqdm
 pycryptodome
 urllib3
-rubika
-mutagen
-gtts
