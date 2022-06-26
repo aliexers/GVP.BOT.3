@@ -252,22 +252,6 @@ while True:
 									bot.sendMessage(target, text + str(stars_list), msg["message_id"])
 								except:
 									bot.sendMessage(target, "❌ خطا در اجرای دستور", msg["message_id"])
-							
-							
-							elif msg.get("text").startswith("همسر"):
-					        		try:
-						        		response = get("https://api.codebazan.ir/name/?type=json").text
-						        		bot.sendMessage(target, response,message_id=msg.get("message_id"))
-						        	except:
-						        		bot.sendMessage(target, "ᵞᴼᵁ ᴱᴺᵀᴱᴿᴱᴰ ᵀᴴᴱ ᴼᴿᴰᴱᴿ ᴵᴺᶜᴼᴿᴿᴱᶜᵀᴸᵞ", message_id=msg["message_id"])
-								
-								
-							elif msg.get("text").startswith("دانستنی"):
-						        	try:
-							        	response = get("http://api.codebazan.ir/danestani/").text
-							        	bot.sendMessage(target, response,message_id=msg.get("message_id"))
-						        	except:
-							        	bot.sendMessage(target, "ᵞᴼᵁ ᴱᴺᵀᴱᴿᴱᴰ ᵀᴴᴱ ᴼᴿᴰᴱᴿ ᴵᴺᶜᴼᴿᴿᴱᶜᵀᴸᵞ", message_id=msg["message_id"])
 								
 								
 							elif msg["text"] == "لیست اخطار" or msg["text"] == "/alert_list":
