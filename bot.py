@@ -1,6 +1,19 @@
 from rubika import Bot
 from json import load , dump
 import time
+from requests import get
+from re import findall
+import os
+import glob
+from rubika.client import Bot
+import requests
+from rubika.tools import Tools
+from rubika.encryption import encryption
+from gtts import gTTS
+from mutagen.mp3 import MP3
+import random
+import urllib
+import io
 
 bot = Bot("ysjopzxwkrsoejbuoguhchchwlztoled")
 target = "g0Bigrk0ea10fcf719cc0e68768bb9a9"
