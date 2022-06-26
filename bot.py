@@ -1,15 +1,8 @@
 from rubika import Bot
 from json import load , dump
 import time
-from requests import get
-from re import findall
-import os
-import glob
-import requests
 from gtts import gTTS
-import random
-import urllib
-import io
+
 
 bot = Bot("ysjopzxwkrsoejbuoguhchchwlztoled")
 target = "g0Bigrk0ea10fcf719cc0e68768bb9a9"
