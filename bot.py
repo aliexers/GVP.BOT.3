@@ -1,7 +1,6 @@
 from rubika import Bot
 from json import load , dump
 import time
-from gtts import gTTS
 
 
 bot = Bot("ysjopzxwkrsoejbuoguhchchwlztoled")
