@@ -5,12 +5,8 @@ from requests import get
 from re import findall
 import os
 import glob
-from rubika.client import Bot
 import requests
-from rubika.tools import Tools
-from rubika.encryption import encryption
 from gtts import gTTS
-from mutagen.mp3 import MP3
 import random
 import urllib
 import io
