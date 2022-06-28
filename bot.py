@@ -3,7 +3,7 @@ from json import load , dump
 import time
 
 bot = Bot("ysjopzxwkrsoejbuoguhchchwlztoled")
-target = "g0Bigrk0ea10fcf719cc0e68768bb9a9"
+target = "g0mj5C09dfcd676fa8a7c4e94c3edd58"
 
 
 # Coded By : github.com/HiByeDev ~ rubika -> @Develover
@@ -56,7 +56,7 @@ def alert(guid,user,alert_text=""):
 	for i in range(max_alert):
 		no = i+1
 		if alert_count == no:
-			bot.sendMessage(target, "💢 اخطار [ @"+user+" ] \n\n"+ str(alert_text) +" شما ("+ str(no) +"/"+ str(max_alert) +") اخطار دریافت کرده اید .\n\nپس از دریافت "+ str(max_alert) +" اخطار ، از گروه اخراج خواهید شد .", msg["message_id"])
+			bot.sendMessage(target, "🔻اخطار [ @"+user+" ] \n\n"+ str(alert_text) +" شما ("+ str(no) +"/"+ str(max_alert) +") اخطار دریافت کرده اید .\n\nپس از دریافت "+ str(max_alert) +" اخطار ، از گروه اخراج خواهید شد .", msg["message_id"])
 			return
 
 # star function
@@ -252,8 +252,8 @@ while True:
 									bot.sendMessage(target, text + str(stars_list), msg["message_id"])
 								except:
 									bot.sendMessage(target, "❌ خطا در اجرای دستور", msg["message_id"])
-							
-							
+								
+								
 							elif msg["text"] == "لیست اخطار" or msg["text"] == "/alert_list":
 								try:
 									text = "⚠ لیست اخطارهای کاربران گروه :\n\n"
@@ -513,28 +513,13 @@ while True:
 						data = msg['event_data']
 						if data["type"]=="RemoveGroupMembers":
 							user = bot.getUserInfo(data['peer_objects'][0]['object_guid'])["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"🚨 کاربر {user} با موفقیت از گروه حذف شد .", msg["message_id"])
-							# bot.deleteMessages(target, [msg["message_id"]])
-						
-						elif data["type"]=="AddedGroupMembers":
-							user = bot.getUserInfo(data['peer_objects'][0]['object_guid'])["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"سلام {user} عزیز 🌹 \n • به گروه {name} خوش اومدی 😍 \n 📿 لطفا قوانین رو رعایت کن .\n 💎 برای مشاهده قوانین کافیه کلمه (قوانین) رو ارسال کنی .", msg["message_id"])
+							bot.sendMessage(target, f"🔹کاربر {user} با موفقیت از گروه حذف شد .", msg["message_id"])
 							# bot.deleteMessages(target, [msg["message_id"]])
 						
 						elif data["type"]=="LeaveGroup":
 							user = bot.getUserInfo(data['performer_object']['object_guid'])["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"خدانگهدار {user} 👋 ", msg["message_id"])
+							bot.sendMessage(target, f"کاربر {user} به لیست ترک کرده ها افزوده شد ✅", msg["message_id"])
 							# bot.deleteMessages(target, [msg["message_id"]])
-							
-						elif data["type"]=="JoinedGroupByLink":
-							guid = data['performer_object']['object_guid']
-							user = bot.getUserInfo(guid)["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"سلام {user} عزیز 🌹 \n• به گروه {name} خوش اومدی 😍 \n 📿 لطفا قوانین رو رعایت کن .\n 💎 برای مشاهده قوانین کافیه کلمه (قوانین) رو ارسال کنی .", msg["message_id"])
-							# bot.deleteMessages(target, [msg["message_id"]])
-							if guid in blacklist:
-								for i in range(no_alerts.count(guid)):
-									no_alerts.remove(guid)
-								blacklist.remove(guid)
 					
 					# elif msg["type"]=="Gif" or msg["type"]=="Sticker" and not msg["message_id"] in answered:
 					# 	if gif_lock and not msg["author_object_guid"] in admins:
