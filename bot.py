@@ -71,7 +71,7 @@ def star(guid,user):
 
 while True:
 	if auto_lock:
-		if not locked and time.localtime().tm_hour == 00:
+		if not locked and time.localtime().tm_hour == 00:10
 			bot.setMembersAccess(target, ["AddMember"])
 			bot.sendMessage(target, "⏰ زمان قفل خودکار گروه فرا رسیده است .\n - گروه تا ساعت [ 08:00 ] تعطیل می باشد .")
 			locked , sleeped = True , True
