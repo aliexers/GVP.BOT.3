@@ -44,7 +44,7 @@ def alert(guid,user,alert_text=""):
 
 	alerts[user] = alert_count
 
-	max_alert = 5    # you can change it
+	max_alert = 2    # you can change it
 
 
 	if alert_count == max_alert:
