@@ -56,7 +56,7 @@ def alert(guid,user,alert_text=""):
 	for i in range(max_alert):
 		no = i+1
 		if alert_count == no:
-			bot.sendMessage(target, "💢 اخطار [ @"+user+" ] \n\n"+ str(alert_text) +" شما ("+ str(no) +"/"+ str(max_alert) +") اخطار دریافت کرده اید .\n\nپس از دریافت "+ str(max_alert) +" اخطار ، از گروه اخراج خواهید شد .", msg["message_id"])
+			bot.sendMessage(target, "🔻 اخطار [ @"+user+" ] \n\n"+ str(alert_text) +" شما ("+ str(no) +"/"+ str(max_alert) +") اخطار دریافت کرده اید .\n\nپس از دریافت "+ str(max_alert) +" اخطار ، از گروه اخراج خواهید شد .", msg["message_id"])
 			return
 
 # star function
@@ -73,7 +73,7 @@ while True:
 	if auto_lock:
 		if not locked and time.localtime().tm_hour == 00:
 			bot.setMembersAccess(target, ["AddMember"])
-			bot.sendMessage(target, "⏰ زمان قفل خودکار گروه فرا رسیده است .\n - گروه تا ساعت [ 08:00 ] تعطیل می باشد .")
+			bot.sendMessage(target, "⏰ زمان قفل خودکار گروه فرا رسیده است .\n - گروه تا ساعت [ 08:00 ] بسته می باشد .")
 			locked , sleeped = True , True
 
 		if locked and time.localtime().tm_hour == 8:
@@ -339,23 +339,14 @@ while True:
 								except:
 									bot.sendMessage(target, "❌ خطا در اجرای دستور", msg["message_id"])
 								
-							# elif msg["text"] == "قفل گیف" or msg["text"] == "/gif_lock":
-							# 	gif_lock = True
-							# 	bot.sendMessage(target, "✅ قفل گیف و استیکر فعال شد .", msg["message_id"])
-
-							
-							# elif msg["text"] == "حذف قفل گیف" or msg["text"] == "/del_gif_lock":
-							# 	gif_lock = False
-							# 	bot.sendMessage(target, "✅ قفل گیف و استیکر غیرفعال شد .", msg["message_id"])
-
 
 							elif msg["text"] == "قفل خودکار" or msg["text"] == "/auto_lock":
 								try:
 									auto_lock = True
-									# time = msg["text"].split(" ")[2].split(":") start=time[0] , end=time[1]
+									time = msg["text"].split(" ")[2].split(":") start=time[0] , end=time[1]
 									start = "00:00"
 									end = "08:00"
-									# open("time.txt","w").write(start +"-"+ end)
+									open("time.txt","w").write(start +"-"+ end)
 									bot.sendMessage(target, "🔒 قفل خودکار برای گروه فعال شد . \n\n گروه ساعت [ "+ start +" ] قفل خواهد شد \n و در ساعت [ "+ end +" ] باز خواهد شد .", msg["message_id"])
 										
 								except:
@@ -372,7 +363,7 @@ while True:
 									guid = bot.getInfoByUsername(msg["text"].replace("اخراج ","").replace("/ban ","")[1:])["data"]["chat"]["abs_object"]["object_guid"]
 									if not guid in admins :
 										bot.banGroupMember(target, guid)
-										# bot.sendMessage(target, "✅ کاربر با موفقیت از گروه اخراج شد", msg["message_id"])
+										bot.sendMessage(target, "✅ کاربر با موفقیت از گروه اخراج شد", msg["message_id"])
 									else :
 										bot.sendMessage(target, "❌ کاربر ادمین میباشد", msg["message_id"])
 										
@@ -381,7 +372,7 @@ while True:
 										guid = bot.getMessagesInfo(target, [msg["reply_to_message_id"]])[0]["author_object_guid"]
 										if not guid in admins :
 											bot.banGroupMember(target, guid)
-											# bot.sendMessage(target, "✅ کاربر با موفقیت از گروه اخراج شد", msg["message_id"])
+											bot.sendMessage(target, "✅ کاربر با موفقیت از گروه اخراج شد", msg["message_id"])
 										else :
 											bot.sendMessage(target, "❌ کاربر ادمین میباشد", msg["message_id"])
 									except:
@@ -410,7 +401,7 @@ while True:
 							
 							elif msg["text"].startswith("آپدیت قوانین") or msg["text"].startswith("/update_rules"):
 								rules = open("rules.txt","w",encoding='utf-8').write(str(msg["text"].replace("آپدیت قوانین","").replace("/update_rules","")))
-								bot.sendMessage(target, "✅  قوانین بروزرسانی شد", msg["message_id"])
+								bot.sendMessage(target, "✅ قوانین بروزرسانی شد", msg["message_id"])
 								# rules.close()
 								
 
@@ -455,15 +446,6 @@ while True:
 									
 								except:
 									bot.sendMessage(target, "❌ خطا در اجرای دستور", msg["message_id"])
-							
-							elif msg["text"] == "قوانین":
-								rules = open("rules.txt","r",encoding='utf-8').read()
-								bot.sendMessage(target, str(rules), msg["message_id"])
-								# rules.close()
-							
-							elif msg["text"] == "دستورات":
-								commands = open("commands.txt","r",encoding='utf-8').read()
-								bot.sendMessage(target,str(commands),msg["message_id"])
 								
 					
 						# User Commands
@@ -475,16 +457,7 @@ while True:
 								bot.deleteMessages(target, [msg["message_id"]])
 								alert(guid,user,"گذاشتن لینک در گروه ممنوع میباشد .\n\n")
 							
-							elif msg["text"] == "دستورات":
-								commands = open("commands.txt","r",encoding='utf-8').read()
-								bot.sendMessage(target,str(commands),msg["message_id"])
-							
-							elif msg["text"] == "قوانین":
-								rules = open("rules.txt","r",encoding='utf-8').read()
-								bot.sendMessage(target, str(rules), msg["message_id"])
-								# rules.close()
-							
-							elif msg["text"].startswith("افزودن") or msg["text"].startswith("/add"):
+							elif msg["text"].startswith("افزودن") or msg["text"].startswith("!add"):
 								try:
 									guid = bot.getInfoByUsername(msg["text"].replace("افزودن ","").replace("/add ","")[1:])["data"]["chat"]["object_guid"]
 									if guid in blacklist:
@@ -513,36 +486,9 @@ while True:
 						data = msg['event_data']
 						if data["type"]=="RemoveGroupMembers":
 							user = bot.getUserInfo(data['peer_objects'][0]['object_guid'])["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"🚨 کاربر {user} با موفقیت از گروه حذف شد .", msg["message_id"])
-							# bot.deleteMessages(target, [msg["message_id"]])
-						
-						elif data["type"]=="AddedGroupMembers":
-							user = bot.getUserInfo(data['peer_objects'][0]['object_guid'])["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"سلام {user} عزیز 🌹 \n • به گروه {name} خوش اومدی 😍 \n 📿 لطفا قوانین رو رعایت کن .\n 💎 برای مشاهده قوانین کافیه کلمه (قوانین) رو ارسال کنی .", msg["message_id"])
-							# bot.deleteMessages(target, [msg["message_id"]])
-						
-						elif data["type"]=="LeaveGroup":
-							user = bot.getUserInfo(data['performer_object']['object_guid'])["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"خدانگهدار {user} 👋 ", msg["message_id"])
+							bot.sendMessage(target, f"🔸کاربر {user} با موفقیت از گروه حذف شد .", msg["message_id"])
 							# bot.deleteMessages(target, [msg["message_id"]])
 							
-						elif data["type"]=="JoinedGroupByLink":
-							guid = data['performer_object']['object_guid']
-							user = bot.getUserInfo(guid)["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"سلام {user} عزیز 🌹 \n• به گروه {name} خوش اومدی 😍 \n 📿 لطفا قوانین رو رعایت کن .\n 💎 برای مشاهده قوانین کافیه کلمه (قوانین) رو ارسال کنی .", msg["message_id"])
-							# bot.deleteMessages(target, [msg["message_id"]])
-							if guid in blacklist:
-								for i in range(no_alerts.count(guid)):
-									no_alerts.remove(guid)
-								blacklist.remove(guid)
-					
-					# elif msg["type"]=="Gif" or msg["type"]=="Sticker" and not msg["message_id"] in answered:
-					# 	if gif_lock and not msg["author_object_guid"] in admins:
-					# 		guid = msg["author_object_guid"]
-					# 		user = bot.getUserInfo(guid)["data"]["user"]["username"]
-					# 		bot.deleteMessages(target, [msg["message_id"]])
-					# 		alert(guid,user,"ارسال گیف و استیکر در گروه ممنوع میباشد .")
-
 					else:
 						if "forwarded_from" in msg.keys() and bot.getMessagesInfo(target, [msg["message_id"]])[0]["forwarded_from"]["type_from"] == "Channel" and not msg["author_object_guid"] in exemption:
 							bot.deleteMessages(target, [msg["message_id"]])
@@ -555,7 +501,7 @@ while True:
 						continue
 				
 				else:
-					if msg["text"] == "ربات روشن" or msg["text"] == "/wakeup":
+					if msg["text"] == "/on" or msg["text"] == "/wakeup":
 						sleeped = False
 						bot.sendMessage(target, "✅ ربات اکنون روشن است .", msg["message_id"])
 					
