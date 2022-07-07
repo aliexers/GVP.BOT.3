@@ -44,7 +44,7 @@ def alert(guid,user,alert_text=""):
 
 	alerts[user] = alert_count
 
-	max_alert = 3    # you can change it
+	max_alert = 5    # you can change it
 
 
 	if alert_count == max_alert:
@@ -116,16 +116,21 @@ while True:
 
 
 							elif msg["text"] == "bot" or msg["text"] == "Bot" :
-								bot.sendMessage(target, "در حال دریافت اطلاعات از هاست ... \n لطفا چند لحظه صبر کنید ❗", msg["message_id"])
-								time.sleep(2)
-								bot.sendMessage(target, "recive code from git hub GVP.py ...", msg["message_id"])
-								time.sleep(1)
-								bot.sendMessage(target, "recive information form the host ...", msg["message_id"])
-								time.sleep(0.7)
-								bot.sendMessage(target, "hosts ping: 37.0 ms", msg["message_id"])
-								time.sleep(0.5)
-								bot.sendMessage(target, "پنل GVP-BOT برسی شد ✅ \n خطای دریافت نشد ❌", msg["message_id"])
-								bot.sendMessage(target, "هاست برسی شد ✅ \n خطای دریافت نشد ❌ \n ping: 37.0 ms", msg["message_id"])
+								bot.sendMessage(target, "پنل برسی شد\nخطای دریافت نشد\nربات روشن است✅", msg["message_id"])
+							
+							elif msg["text"].startswith("یادبگیر") or msg["text"].startswith("/learn"):
+								try:
+									text = msg["text"].replace("یادبگیر ","").replace("/learn ","").split(":")
+									word = text[0]
+									answer = text[1]
+
+									data[word] = answer
+									with open("learn.json","w",encoding="utf-8") as learn:
+										dump(data, learn)
+
+									bot.sendMessage(target, "✅ ذخیره شد", msg["message_id"])
+								except:
+									bot.sendMessage(target, "❌ خطا در اجرای دستور", msg["message_id"])
 
 
 							elif msg["text"].startswith("افزودن ادمین") or msg["text"].startswith("/add_admin") :
@@ -333,6 +338,15 @@ while True:
 									bot.sendMessage(target, "⏰ حالت آرام غیرفعال شد", msg["message_id"])
 								except:
 									bot.sendMessage(target, "❌ خطا در اجرای دستور", msg["message_id"])
+								
+							# elif msg["text"] == "قفل گیف" or msg["text"] == "/gif_lock":
+							# 	gif_lock = True
+							# 	bot.sendMessage(target, "✅ قفل گیف و استیکر فعال شد .", msg["message_id"])
+
+							
+							# elif msg["text"] == "حذف قفل گیف" or msg["text"] == "/del_gif_lock":
+							# 	gif_lock = False
+							# 	bot.sendMessage(target, "✅ قفل گیف و استیکر غیرفعال شد .", msg["message_id"])
 
 
 							elif msg["text"] == "قفل خودکار" or msg["text"] == "/auto_lock":
@@ -427,7 +441,7 @@ while True:
 								bot.sendMessage(target, "🔓 گروه اکنون باز است", msg["message_id"])
 							
 
-							elif msg["text"].startswith("افزودن") or msg["text"].startswith("!add"):
+							elif msg["text"].startswith("افزودن") or msg["text"].startswith("/add"):
 								try:
 									guid = bot.getInfoByUsername(msg["text"].replace("افزودن ","").replace("/add ","")[1:])["data"]["chat"]["object_guid"]
 									if guid in blacklist:
@@ -504,7 +518,7 @@ while True:
 						
 						elif data["type"]=="LeaveGroup":
 							user = bot.getUserInfo(data['performer_object']['object_guid'])["data"]["user"]["first_name"]
-							bot.sendMessage(target, f"کاربر {user} به لیست ترک کرده ها افزوده شد ✅", msg["message_id"])
+							bot.sendMessage(target, f"bye {user}", msg["message_id"])
 							# bot.deleteMessages(target, [msg["message_id"]])
 					
 					# elif msg["type"]=="Gif" or msg["type"]=="Sticker" and not msg["message_id"] in answered:
