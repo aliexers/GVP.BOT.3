@@ -333,15 +333,6 @@ while True:
 									bot.sendMessage(target, "⏰ حالت آرام غیرفعال شد", msg["message_id"])
 								except:
 									bot.sendMessage(target, "❌ خطا در اجرای دستور", msg["message_id"])
-								
-							elif msg["text"] == "قفل گیف" or msg["text"] == "/gif_lock":
-							 	gif_lock = True
-							 	bot.sendMessage(target, "✅ قفل گیف و استیکر فعال شد .", msg["message_id"])
-
-							
-							 elif msg["text"] == "حذف قفل گیف" or msg["text"] == "/del_gif_lock":
-							 	gif_lock = False
-							 	bot.sendMessage(target, "✅ قفل گیف و استیکر غیرفعال شد .", msg["message_id"])
 
 
 							elif msg["text"] == "قفل خودکار" or msg["text"] == "/auto_lock":
