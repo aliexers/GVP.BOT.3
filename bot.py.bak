@@ -2,8 +2,8 @@ from rubika import Bot
 from json import load , dump
 import time
 
-bot = Bot("qxdmybltnnhznkqdeolyaartbalrsfzp")
-target = "g0Bimr504cdc36b755c9b716a7c4816f"
+bot = Bot("otxexkldpkrleqszylzzuwhqeqrwkvbvb")
+target = "g0B6ZNX0211e84247655d112c0a2ea95"
 
 
 # Coded By : github.com/HiByeDev ~ rubika -> @Develover
@@ -44,7 +44,7 @@ def alert(guid,user,alert_text=""):
 
 	alerts[user] = alert_count
 
-	max_alert = 2   # you can change it
+	max_alert = 1    # you can change it
 
 
 	if alert_count == max_alert:
