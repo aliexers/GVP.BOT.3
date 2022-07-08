@@ -3,7 +3,7 @@ from json import load , dump
 import time
 
 bot = Bot("sakotwlwifwmkobgawqnxwjuyewntmgr")
-target = "g0Bigrk0ea10fcf719cc0e68768bb9a9"
+target = "g0mj5C09dfcd676fa8a7c4e94c3edd58"
 
 
 # Coded By : github.com/HiByeDev ~ rubika -> @Develover
