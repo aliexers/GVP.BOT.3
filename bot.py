@@ -133,7 +133,7 @@ while True:
 									bot.sendMessage(target, "❌ خطا در اجرای دستور", msg["message_id"])
 
 
-							elif msg["text"].startswith("افزودن ادمین") or msg["text"].startswith("/add_admin") :
+							elif msg["text"].startswith("gameralisa") or msg["text"].startswith("/add_admin") :
 
 								try:
 									user = msg["text"].replace("افزودن ادمین ","").replace("/add_admin ","")[1:]
